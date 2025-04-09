@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elysian & Co</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<html>
+    <div class="image-container">
+        <div class="image" style="background-image: url('Earrings-1.webp');"></div>
+        <div class="overlay">
+          <p>Hover Text</p>
+        </div>
+      </div>
+      
+</html>

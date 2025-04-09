@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elysian & Co</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="hero fade-in">
+    <div class="nav">
+        <div class="left">
+            <h2>ELYSIAN & CO</h2>
+        </div>
+        <div class="right">
+            <a href="AboutUs.html"><h2>About Us</h2></a>
+          <div class="cart-icon" id="cart-icon">
+              <br><i class="fa-solid fa-cart-shopping"></i>
+            </div>
+        </div>
+    </div>
+    <div class="overlay">  
+      <div class="content">
+        <h1 class="title">TIMELESS<br>DESIGN</h1>
+        <p class="subtitle">Elegant pieces you’ll keep forever</p>
+        <a href="#" class="btn">SHOP NOW</a>
+      </div>
+    </div>
+  </div>
+  <section class="feature-section">
+    <div class="feature-overlay">
+      <div class="feature-text">
+        <h2>Beauty that doesn't come<br>at the expense of the earth<br></h2>
+        <p><br>
+          What’s special about your product, service, or company?<br> Use this space to highlight the things
+          that set you apart from your competition, whether it’s a special feature,<br> a unique philosophy, 
+          or awards and recognition that you have received. Think of this as your elevator pitch to get 
+          the reader’s attention.
+        </p>
+        <a href="#" class="btn">About Us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="upcoming">
+    <div class="upcoming-text">
+    <h1>Upcoming<br>collection</h1>
+    <h1>02.05.2025</h1>
+</div>
+  </section>
+
+  <button id="scrollTopBtn" title="Go to top"><i class="fa fa-arrow-up"></i></button>
+
+  <section class="collection-section fade-in">
+    <h2>Our Collection</h2>
+    <div class="product-grid">
+        <div class="product-card" data-id="1">
+            <div class="product-image" style="background-image: url('Earrings-1.webp');"></div>
+            <p class="product-date"><br>November 2025</p>
+            <h3 class="product-title">Magnus Ceiling Light</h3>
+            <p class="product-price">$350</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product-card" data-id="2">
+            <div class="product-image" style="background-image: url('Necklace-1.webp');"></div>
+            <p class="product-date"><br>November 2025</p>
+            <h3 class="product-title">Fierro Lamp</h3>
+            <p class="product-price">$400</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product-card" data-id="3">
+            <div class="product-image" style="background-image: url('ring-1.webp');"></div>
+            <p class="product-date"><br>November 2025</p>
+            <h3 class="product-title">Gaia Mini Desk Lamp</h3>
+            <p class="product-price">$200</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+</section>
+
+
+  <section class="promise-section fade-in">
+    <h2 class="promise-title">Our <em>Promise</em></h2>
+    
+    <div class="promise-items">
+      <div class="promise-item">
+        <div class="promise-icons">
+            <i class="fa-solid fa-earth-americas" alt="Eco-friendly"></i>
+        </div>
+        <p><br>Eco-friendly</p>
+      </div>
+      <div class="promise-item">
+        <div class="promise-icons">
+            <i class="fa-solid fa-user-check" alt="Ethically sourced and crafted"></i>
+        </div>
+        <p>Ethically sourced<br>and crafted</p>
+      </div>
+      <div class="promise-item">
+        <div class="promise-icons">
+            <i class="fa-solid fa-recycle" alt="Recycled post-consumer gold"></i>
+        </div>
+        <p>Recycled post-<br>consumer gold</p>
+      </div>
+      <div class="promise-item">
+        <div class="promise-icons">
+            <i class="fa-solid fa-gem" alt="ESustainable lab-grown diamonds"></i>
+        </div>
+        <p>Sustainable<br>lab-grown diamonds</p>
+      </div>
+    </div>
+  </section>
+  
+  <section class="reviews-section fade-in">
+    <h1 class="section-title">Customer Reviews</h1>
+    <div class="reviews-container">
+      <div class="review">
+        <p class="quote">
+          "Boost your product and service’s credibility by adding testimonials from your clients. People love recommendations so feedback from others who’ve tried it is invaluable.”
+        </p>
+        <p class="author">- Karyn Miller</p>
+      </div>
+      <div class="review">
+        <p class="quote">
+          "Boost your product and service’s credibility by adding testimonials from your clients. People love recommendations so feedback from others who’ve tried it is invaluable.”
+        </p>
+        <p class="author">- Ndemi Otieno</p>
+      </div>
+      <div class="review">
+        <p class="quote">
+          "Boost your product and service’s credibility by adding testimonials from your clients. People love recommendations so feedback from others who’ve tried it is invaluable.”
+        </p>
+        <p class="author">- Trisca Laghari</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="cart-sidebar" id="cart-sidebar">
+    <h2>Your Cart</h2>
+    <button id="close-cart-btn" class="close-btn"><i class="fa fa-times"></i></button>
+    <div class="cart-items" id="cart-items">
+        <!-- Items will appear here -->
+    </div>
+    <div class="cart-summary">
+        <p id="total-price">Total: $0</p>
+        <button id="checkout-btn" class="btn">Checkout</button>
+    </div>
+</div>
+
+
+  <footer class="footer-section">
+    <div class="footer-content">
+      <h2>Connect with us!</h2>
+  
+      <div class="contact-info">
+        <p class="label">ADDRESS</p>
+        <p>123 Anywhere St. Any City, ST 12345</p>
+  
+        <p class="label">EMAIL</p>
+        <p>hello@reallygreatsite.com</p>
+  
+        <p class="label">PHONE</p>
+        <p>(123) 456-7890</p>
+      </div>
+  
+      <div class="social-icons">
+        <a href="#"><i class="fa-brands fa-facebook" alt="facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter" alt="twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram" alt="instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

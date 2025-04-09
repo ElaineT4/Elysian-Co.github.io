@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout | Elysian & Co</title>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fffdf8;
+      color: #1b2e2a;
+      margin: 0;
+      padding: 0;
+    }
+
+    .checkout-container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 40px;
+      background-color: #f4ede5;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #order-summary ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    #order-summary li {
+      background-color: #fff;
+      margin-bottom: 10px;
+      padding: 15px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    #order-summary p {
+      font-size: 18px;
+      text-align: right;
+      margin-top: 20px;
+    }
+
+    .return-home {
+      display: block;
+      margin: 30px auto 0;
+      text-align: center;
+      background-color: #1b2e2a;
+      color: white;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+
+    .return-home:hover {
+      background-color: #2a3f37;
+    }
+  </style>
+</head>
+<body>
+  <div class="checkout-container">
+    <h2>Thank you for your order!</h2>
+    <div id="order-summary"></div>
+    <a href="index.html" class="return-home">Continue Shopping</a>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const order = JSON.parse(localStorage.getItem('order')) || [];
+      const summary = document.getElementById('order-summary');
+
+      if (order.length === 0) {
+        summary.innerHTML = "<p>No recent orders found.</p>";
+        return;
+      }
+
+      let html = '<ul>';
+      let total = 0;
+      order.forEach(item => {
+        html += `<li>
+          <span>${item.name} x${item.quantity}</span>
+          <span>$${(item.price * item.quantity).toFixed(2)}</span>
+        </li>`;
+        total += item.price * item.quantity;
+      });
+      html += `</ul><p><strong>Total:</strong> $${total.toFixed(2)}</p>`;
+
+      summary.innerHTML = html;
+
+      // Clear order storage
+      localStorage.removeItem('order');
+    });
+  </script>
+</body>
+</html>
