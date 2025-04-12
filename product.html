@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Products | Elysian & Co</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    body{
+        background-color: #26322f;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: 'Georgia', serif;
+    }
+
+    .nav {
+    display: flex; /* Use flexbox to display items */
+    justify-content: space-between; /* Space out the items */
+    align-items: center; /* Vertically align items */
+    font-size: 20px;
+    padding: 10px 20px;
+    position: relative; /* Make sure it’s a positioned container for absolute elements */
+}
+
+.nav .left {
+    position: absolute; /* Absolute positioning to center */
+    left: 50%; /* Move it to the middle of the nav */
+    transform: translateX(-50%);
+    text-decoration: none;
+}
+
+.nav .right {
+    display: flex;
+    gap: 20px; /* Adds space between About Us and Cart */
+    margin-left: auto; /* This pushes the right side container to the far right */
+    color: white;
+    text-decoration: none;
+  }
+
+  .nav .left a {
+    text-decoration: none; /* Removes underline from links */
+    color: white; /* Ensures link text is white */
+  }
+  
+  .nav .right a {
+    text-decoration: none; /* Removes underline from links */
+    color: white; /* Ensures link text is white */
+  }
+  
+  .nav h2 {
+    text-align: center;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    text-decoration: none;
+  }
+
+  .nav .right a:hover{
+    color: #737373;
+  }
+
+  .image img{
+    margin: auto;
+    width: 100%;
+    height: auto;
+  }
+
+  .hamburger {
+    margin-top: 15px;
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1100;
+    color: white;
+  }
+  
+  /* --- Mobile Menu Styling --- */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 100vh;
+    width: 250px;
+    background-color: #737373;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 60px 20px;
+    transition: left 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .mobile-menu a {
+    width: 100%;
+    margin-top: 0;
+    padding: 20px 0;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+
+  }
+  
+  .mobile-menu a:hover {
+    background-color: #e3e3e3;
+    color: #26322f;
+  }
+  
+  .mobile-menu.open {
+    left: 0;
+  }
+
+  .overlay {
+    position: absolute;
+    margin-top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .overlay p{
+    font-size: 40px;
+  }
+
+    .product{
+    background-color: #303f3c;
+    height: 100vh;
+    
+  }
+
+  .collection-section {
+    background-color: #26322f;
+    padding: 80px 40px;
+    color: white;
+    text-align: center;
+  }
+  
+  .collection-section h2 {
+    font-family: 'Georgia', serif;
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+    font-style: italic;
+  }
+    
+  .product-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin-bottom: -150px;
+}
+
+.product-card {
+    max-width: 280px;
+    text-align: left;
+    position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-title {
+  color: #7a9e7e;
+}
+
+.product-image {
+    width: 300px;
+    height: 200px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border: 1px solid #f0f0f0;
+    background-color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.product-image:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.product-date {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #ccc;
+    margin-bottom: 4px;
+}
+
+.product-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 6px;
+    color: white;
+}
+
+.product-price {
+    font-size: 14px;
+    color: #ddd;
+}
+
+.product-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.add-to-cart {
+  position: absolute;
+  bottom: 20px;
+  right: 0px;
+  background-color: #7a9e7e; /* new color */
+  color: white;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.add-to-cart:hover {
+  background-color: #5c7e62;
+}
+
+/* === Filter Styles === */
+.collection-section label {
+  font-weight: bold;
+  color: #fff;
+  margin-right: 10px;
+}
+
+#category-filter,
+#collection-filter {
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #7a9e7e;
+  border-radius: 6px;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0 10px 20px 0;
+  transition: all 0.3s ease;
+  min-width: 200px;
+}
+
+#category-filter:hover,
+#collection-filter:hover {
+  border-color: #5c7e62;
+  background-color: #fff;
+}
+
+#category-filter:focus,
+#collection-filter:focus {
+  outline: none;
+  border-color: #5c7e62;
+  box-shadow: 0 0 5px rgba(122, 158, 126, 0.6);
+}
+
+
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+  transition: right 0.3s ease;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.cart-sidebar.open {
+  right: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: black;
+  font-size: 30px;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.cart-items {
+  margin-top: 20px;
+}
+
+
+.cart-item {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.cart-item-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: #fefefe;
+  padding: 10px;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+/* Product Image */
+.cart-item-inner img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cart-item .details {
+  flex: 1;
+  padding-right: 40px;
+}
+
+.cart-item .product-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
+  margin: 0;
+}
+
+.cart-item .product-price {
+  color: #555;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.cart-item .remove-item {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.cart-item .remove-item:hover {
+  color: #000;
+}
+
+/* Quantity Controls at bottom right */
+.cart-item .quantity-control {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.05);
+}
+
+.cart-item .quantity-control button {
+  background-color: #f4ede5;
+  border: 1px solid #ddd;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+}
+
+.cart-item .quantity-control input {
+  width: 40px;
+  text-align: center;
+  border: 1px solid #ddd;
+  padding: 4px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #000;
+}
+
+/* CART SUMMARY */
+.cart-summary {
+  padding: 10px;
+  text-align: right;
+  font-size: 18px;
+}
+
+.cart-icon{
+  margin-bottom: 5px;
+}
+
+/* CHECKOUT BUTTON */
+#checkout-btn {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+#checkout-btn:hover {
+  background-color: #555;
+}
+
+#checkout-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+
+
+.footer-section {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: #737373;
+    color: white;
+    font-family: 'Georgia', serif;
+  }
+  
+  .footer-content h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: white;
+  }
+  
+  .contact-info {
+    margin-bottom: 40px;
+  }
+  
+  .contact-info .label {
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    color: white;
+  }
+  
+  .contact-info p {
+    margin: 0;
+    color: white
+  }
+  
+  .social-icons a {
+    margin: 0 10px;
+    display: inline-block;
+    margin-top: 50px;
+  }
+  
+  .social-icons i{
+    font-size: 30px;
+    color: white;
+  }
+
+  .social-icons i:hover{
+    color: #2f3a36;
+  }
+
+  .copyright{
+    margin-top: 40px;
+  }
+
+  @media (max-width: 768px) {
+    .right a{
+      visibility: hidden; /* Hide normal nav */
+    }
+  
+    .hamburger {
+      display: block;
+    }
+
+  }
+  </style>
+</head>
+<body>
+    <div class="nav">
+      <div class="hamburger" id="hamburger" >
+        <i class="fas fa-bars"></i>
+      </div>
+        <div class="left">
+            <a href="index.html"><h2>ELYSIAN & CO</h2></a>
+        </div>
+        <div class="right">
+            <a href="product.html" ><h2>Our Product</h2></a>
+            <a href="AboutUs.html" ><h2>About Us</h2></a>
+          <div class="cart-icon" id="cart-icon">
+              <br><i class="fa-solid fa-cart-shopping"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu">
+      
+      <a href="product.html" style="margin-top: 20px;">Our Product</a>
+      <a href="AboutUs.html">About Us</a>
+    </div>
+
+    <div class="image">
+        <img src="background-2(1).jpg">
+    </div>
+    
+    <section class="collection-section fade-in">
+        <h2>Our Collection</h2>
+        <div style="margin-bottom: 30px;">
+          <label for="category-filter" style="font-size: 18px;">Filter by Category:</label>
+          <!-- Category Filter -->
+            <select id="category-filter">
+                <option value="all">All Categories</option>
+                <option value="necklace">Necklace</option>
+                <option value="earrings">Earrings</option>
+                <option value="ring">Rings</option>
+            </select>
+            
+            <!-- Collection Filter -->
+            <select id="collection-filter">
+                <option value="all">All Collections</option>
+                <option value="timeless">Timeless Collection</option>
+                <option value="valentine">Valentine Collection</option>
+                <option value="bejewelled">Bejewelled Collection</option>
+            </select>
+  
+        </div>
+        <div class="product-grid" id="product-container"></div>
+      </section>
+      
+      
+    <section class="collection-section fade-in">
+
+        
+    </section>
+
+    <footer class="footer-section">
+      <div class="footer-content">
+        <h2>Connect with us!</h2>
+    
+        <div class="contact-info">
+          <p class="label">ADDRESS</p>
+          <p>123 Anywhere St. Any City, ST 12345</p>
+    
+          <p class="label">EMAIL</p>
+          <p>hello@reallygreatsite.com</p>
+    
+          <p class="label">PHONE</p>
+          <p>(123) 456-7890</p>
+        </div>
+    
+        <div class="social-icons">
+          <a href="#"><i class="fa-brands fa-facebook" alt="facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter" alt="twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram" alt="instagram"></i></a>
+        </div>
+      </div>
+      <div class="copyright">&copy; 2025 Elysian & Co. All rights reserved. Crafted with elegance & care.</div>
+    </footer>
+    
+
+  <!-- At the end of your <body>, replace all <script src="..."> with this -->
+    <script>
+        // === Global Variables ===
+        const cartIcon = document.getElementById("cart-icon");
+        const cartSidebar = document.createElement("div");
+        cartSidebar.className = "cart-sidebar";
+        document.body.appendChild(cartSidebar);
+      
+        const productContainer = document.getElementById("product-container");
+        const categoryFilter = document.getElementById("category-filter");
+        const collectionFilter = document.getElementById("collection-filter");
+      
+        const productData = {
+          necklace: [
+            { id: 'T004', name: 'Simple Necklace', category: 'necklace', collection: 'Timeless Collection', price: 200, image: 'timeless/simple-3.webp' },
+            { id: 'V001', name: 'Heart Necklace', category: 'necklace', collection: 'Valentine Collection', price: 200, image: 'valentine/Necklace-1.webp' },
+            { id: 'B003', name: 'Bejewelled Necklace', category: 'necklace', collection: 'Bejewelled Collection', price: 200, image: 'bejewelled/Spark-2.webp' }
+          ],
+          earrings: [
+            { id: 'T001', name: 'Simple Earrings', category: 'earrings', collection: 'Timeless Collection', price: 200, image: 'timeless/Earrings-1.webp' },
+            { id: 'V002', name: 'Heart Earrings', category: 'earrings', collection: 'Valentine Collection', price: 200, image: 'valentine/valentine-1.webp' },
+            { id: 'B002', name: 'Bejewelled Earrings', category: 'earrings', collection: 'Bejewelled Collection', price: 200, image: 'bejewelled/Spark-1.webp' },
+            { id: 'B004', name: 'Bejewelled Ear Stud', category: 'earrings', collection: 'Bejewelled Collection', price: 200, image: 'bejewelled/Spark-3.webp' }
+          ],
+          rings: [
+            { id: 'T003', name: 'Simple Ring', category: 'ring', collection: 'Timeless Collection', price: 200, image: 'timeless/simple-2.webp' },
+            { id: 'V003', name: 'Heart Ring', category: 'ring', collection: 'Valentine Collection', price: 200, image: 'valentine/valentine-2.webp' },
+            { id: 'B001', name: 'Bejewelled Ring', category: 'ring', collection: 'Bejewelled Collection', price: 200, image: 'bejewelled/ring-1.webp' }
+          ]
+        };
+      
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      
+        // === Cart Sidebar Initialization ===
+        cartSidebar.innerHTML = `
+          <button class="close-btn">&times;</button>
+          <h2>Your Cart</h2>
+          <div class="cart-items"></div>
+          <div class="cart-summary">Total: RM0</div>
+          <button id="checkout-btn" disabled>Checkout</button>
+        `;
+      
+        const closeBtn = cartSidebar.querySelector(".close-btn");
+        const cartItemsContainer = cartSidebar.querySelector(".cart-items");
+        const checkoutBtn = cartSidebar.querySelector("#checkout-btn");
+        const cartSummary = cartSidebar.querySelector(".cart-summary");
+      
+        cartIcon.addEventListener("click", () => cartSidebar.classList.add("open"));
+        closeBtn.addEventListener("click", () => cartSidebar.classList.remove("open"));
+      
+        // === Utility Functions ===
+        function showToast(msg) {
+          const toast = document.createElement("div");
+          toast.textContent = msg;
+          toast.style.cssText = `
+            position: fixed; bottom: 1px; right: 30px; background: #7a9e7e; color: white;
+            padding: 10px 20px; border-radius: 5px; z-index: 2000; font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2); opacity: 0; transition: opacity 0.3s ease;
+          `;
+          document.body.appendChild(toast);
+          requestAnimationFrame(() => toast.style.opacity = 1);
+          setTimeout(() => {
+            toast.style.opacity = 0;
+            setTimeout(() => document.body.removeChild(toast), 300);
+          }, 2000);
+        }
+      
+        function updateCartUI() {
+          cartItemsContainer.innerHTML = "";
+          let total = 0;
+      
+          cart.forEach((item, index) => {
+            const itemDiv = document.createElement("div");
+            itemDiv.className = "cart-item";
+            itemDiv.innerHTML = `
+              <div class="cart-item-inner">
+                <img src="${item.image}" />
+                <div class="details">
+                  <p class="product-title">${item.name}</p>
+                  <p class="product-price">RM ${item.price}</p>
+                </div>
+                <div class="quantity-control">
+                  <button class="decrease">-</button>
+                  <input type="number" value="${item.quantity}" readonly>
+                  <button class="increase">+</button>
+                </div>
+                <button class="remove-item">&times;</button>
+              </div>
+            `;
+      
+            itemDiv.querySelector(".decrease").addEventListener("click", () => updateQuantity(index, -1));
+            itemDiv.querySelector(".increase").addEventListener("click", () => updateQuantity(index, 1));
+            itemDiv.querySelector(".remove-item").addEventListener("click", () => {
+              cart.splice(index, 1);
+              updateCartUI();
+            });
+      
+            cartItemsContainer.appendChild(itemDiv);
+            total += item.price * item.quantity;
+          });
+      
+          cartSummary.innerText = `Total: RM ${total.toFixed(2)}`;
+          checkoutBtn.disabled = cart.length === 0;
+          localStorage.setItem("cart", JSON.stringify(cart));
+      
+          const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+          let icon = document.querySelector("#cart-icon");
+          if (!icon.querySelector(".cart-count")) {
+            const badge = document.createElement("span");
+            badge.className = "cart-count";
+            badge.style.cssText = `
+              position: absolute; top: 15px; right: 0; background: red; color: white;
+              border-radius: 50%; font-size: 12px; padding: 2px 6px;
+            `;
+            icon.appendChild(badge);
+          }
+          icon.querySelector(".cart-count").textContent = cartCount;
+        }
+      
+        function updateQuantity(index, delta) {
+          cart[index].quantity += delta;
+          if (cart[index].quantity <= 0) {
+            cart.splice(index, 1);
+          }
+          updateCartUI();
+        }
+      
+        function addToCart(product) {
+          const existing = cart.find(item => item.id === product.id);
+          if (existing) {
+            existing.quantity += 1;
+          } else {
+            cart.push({ ...product, quantity: 1 });
+          }
+          updateCartUI();
+          showToast(`${product.name} added to cart!`);
+        }
+      
+        // === Product Listing ===
+        function renderProducts(products) {
+          if (!productContainer) return;
+          productContainer.innerHTML = "";
+          products.forEach(product => {
+            const card = document.createElement("div");
+            card.className = "product-card";
+            card.setAttribute("data-id", product.id);
+      
+            card.innerHTML = `
+              <div class="product-image" style="background-image: url('${product.image}');"></div>
+              <p class="product-date"><br>${product.collection}</p>
+              <h3 class="product-title">${product.name}</h3>
+              <p class="product-price">RM ${product.price}</p>
+              <button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i></button>
+            `;
+      
+            card.querySelector(".add-to-cart").addEventListener("click", (e) => {
+              e.stopPropagation();
+              addToCart(product);
+            });
+      
+            card.addEventListener("click", (e) => {
+              if (!e.target.closest(".add-to-cart")) {
+                localStorage.setItem("selectedProduct", JSON.stringify(product));
+                window.location.href = `product-detail.html?id=${product.id}`;
+              }
+            });
+      
+            productContainer.appendChild(card);
+          });
+        }
+      
+        function filterProducts() {
+          const selectedCategory = categoryFilter?.value || 'all';
+          const selectedCollection = collectionFilter?.value || 'all';
+      
+          let filtered = [];
+      
+          Object.values(productData).forEach(arr => {
+            filtered = filtered.concat(
+              arr.filter(product =>
+                (selectedCategory === 'all' || product.category === selectedCategory) &&
+                (selectedCollection === 'all' || product.collection.toLowerCase().includes(selectedCollection.toLowerCase()))
+              )
+            );
+          });
+      
+          renderProducts(filtered);
+        }
+      
+        // === Event Listeners ===
+        categoryFilter?.addEventListener("change", filterProducts);
+        collectionFilter?.addEventListener("change", filterProducts);
+        checkoutBtn?.addEventListener("click", () => {
+          if (cart.length === 0) return;
+          localStorage.setItem("order", JSON.stringify(cart));
+          cart = [];
+          localStorage.setItem("cart", JSON.stringify(cart));
+          window.location.href = "checkout.html";
+        });
+      
+        // === Initialization ===
+        renderProducts([].concat(...Object.values(productData)));
+        updateCartUI();
+
+        const hamburger = document.getElementById("hamburger");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        hamburger.addEventListener("click", () => {
+          mobileMenu.classList.toggle("open");
+        });
+
+        mobileMenu.querySelectorAll("a").forEach(link => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.remove("open");
+          });
+        });
+
+        
+      </script>
+      
+  
+
+  
+</body>
+</html>
