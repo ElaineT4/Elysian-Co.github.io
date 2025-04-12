@@ -10,8 +10,20 @@
       font-family: 'Segoe UI', sans-serif;
       background-color: #fffdf8;
       color: #1b2e2a;
-      margin: 0;
+      margin: auto;
       padding: 0;
+    }
+
+    p {
+      text-align: center;
+    }
+
+    .nav .left a {
+      text-decoration: none;
+      color: black;
+      font-family: 'Georgia', serif;
+      font-size: 0.8rem;
+      padding: 10px;
     }
 
     .checkout-container {
@@ -42,9 +54,17 @@
       justify-content: space-between;
     }
 
-    #order-summary p {
+    /* Only the total text is aligned to the right */
+    #order-summary .total {
       font-size: 18px;
       text-align: right;
+      margin-top: 20px;
+    }
+
+    /* Empty cart message centered */
+    #order-summary .empty {
+      font-size: 18px;
+      text-align: center;
       margin-top: 20px;
     }
 
@@ -67,9 +87,16 @@
   </style>
 </head>
 <body>
+  <div class="nav">
+    <div class="left">
+      <a href="index.html"><h2>ELYSIAN & CO</h2></a>
+    </div>
+  </div>
+
   <div class="checkout-container">
     <h2>Thank you for your order!</h2>
     <div id="order-summary"></div>
+    <p>This is not an actual E-Commerce. This website is mainly for educational purposes.</p>
     <a href="index.html" class="return-home">Continue Shopping</a>
   </div>
 
@@ -79,7 +106,7 @@
       const summary = document.getElementById('order-summary');
 
       if (order.length === 0) {
-        summary.innerHTML = "<p>No recent orders found.</p>";
+        summary.innerHTML = "<p class='empty'>No recent orders found.</p>";
         return;
       }
 
@@ -88,11 +115,11 @@
       order.forEach(item => {
         html += `<li>
           <span>${item.name} x${item.quantity}</span>
-          <span>$${(item.price * item.quantity).toFixed(2)}</span>
+          <span>RM ${(item.price * item.quantity).toFixed(2)}</span>
         </li>`;
         total += item.price * item.quantity;
       });
-      html += `</ul><p><strong>Total:</strong> $${total.toFixed(2)}</p>`;
+      html += `</ul><p class="total"><strong>Total:</strong> RM ${total.toFixed(2)}</p>`;
 
       summary.innerHTML = html;
 
