@@ -2,31 +2,600 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Elysian & CO</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Products | Elysian & Co</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    body{
+      background-color: #2f3a36;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: 'Georgia', serif;
+    }
+
+    .nav {
+    display: flex; /* Use flexbox to display items */
+    justify-content: space-between; /* Space out the items */
+    align-items: center; /* Vertically align items */
+    font-size: 20px;
+    padding: 10px 20px;
+    position: relative; /* Make sure it’s a positioned container for absolute elements */
+}
+
+.nav .left {
+    position: absolute; /* Absolute positioning to center */
+    left: 50%; /* Move it to the middle of the nav */
+    transform: translateX(-50%); /* Correctly center by moving it half its own width */
+    text-decoration: none;
+}
+
+.nav .right {
+    display: flex;
+    gap: 20px; /* Adds space between About Us and Cart */
+    margin-left: auto; /* This pushes the right side container to the far right */
+    color: white;
+    text-decoration: none;
+  }
+
+  .nav .left a {
+    text-decoration: none; /* Removes underline from links */
+    color: white; /* Ensures link text is white */
+  }
+  
+  .nav .right a {
+    text-decoration: none; /* Removes underline from links */
+    color: white; /* Ensures link text is white */
+  }
+  
+  .nav h2 {
+    text-align: center;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    text-decoration: none;
+  }
+
+  .nav .right a:hover{
+    color: #737373;
+  }
+
+  .hamburger {
+    margin-top: 15px;
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1100;
+    color: white;
+  }
+  
+  /* --- Mobile Menu Styling --- */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 100vh;
+    width: 250px;
+    background-color: #737373;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 60px 20px;
+    transition: left 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .mobile-menu a {
+    width: 100%;
+    margin-top: 0;
+    padding: 20px 0;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+
+  }
+  
+  .mobile-menu a:hover {
+    background-color: #e3e3e3;
+    color: #26322f;
+  }
+  
+  .mobile-menu.open {
+    left: 0;
+  }
+
+  .About-Us{
+    display: flex;
+    width: 100%;
+    height: 80vh;
+
+  }
+
+  .About-Us-left{
+    flex: 1;
+    background-image: url('Jewellery-AboutUs-2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+  }
+
+  .About-Us-right{
+    flex: 1;
+    justify-content: center;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    background-color: #26322f;
+    color: white;
+
+  }
+
+  .About-Us-right h1{
+    line-height: 1.6;
+    font-size: 60px;
+    margin-bottom: 50px;
+  }
+
+  .About-Us-right{
+    line-height: 1.6;
+  }
+
+.add-to-cart {
+  position: absolute;
+  bottom: 20px;
+  right: 0px;
+  background-color: #7a9e7e; /* new color */
+  color: white;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.add-to-cart:hover {
+  background-color: #5c7e62;
+}
+
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+  transition: right 0.3s ease;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.cart-sidebar.open {
+  right: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: black;
+  font-size: 30px;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.cart-items {
+  margin-top: 20px;
+}
+
+/* CART ITEM STYLING */
+.cart-item {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.cart-item-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: #fefefe;
+  padding: 10px;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+/* Product Image */
+.cart-item-inner img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Details Section */
+.cart-item .details {
+  flex: 1;
+  padding-right: 40px; /* reserve space for cross button */
+}
+
+.cart-item .product-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
+  margin: 0;
+}
+
+.cart-item .product-price {
+  color: #555;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* ✕ Remove Button */
+.cart-item .remove-item {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.cart-item .remove-item:hover {
+  color: #000;
+}
+
+/* Quantity Controls at bottom right */
+.cart-item .quantity-control {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.05);
+}
+
+.cart-item .quantity-control button {
+  background-color: #f4ede5;
+  border: 1px solid #ddd;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+}
+
+.cart-item .quantity-control input {
+  width: 40px;
+  text-align: center;
+  border: 1px solid #ddd;
+  padding: 4px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #000;
+}
+
+/* CART SUMMARY */
+.cart-summary {
+  padding: 10px;
+  text-align: right;
+  font-size: 18px;
+}
+
+.cart-icon{
+  margin-bottom: 5px;
+}
+
+/* CHECKOUT BUTTON */
+#checkout-btn {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+#checkout-btn:hover {
+  background-color: #555;
+}
+
+#checkout-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+
+
+.footer-section {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: #737373;
+    color: white;
+    font-family: 'Georgia', serif;
+  }
+  
+  .footer-content h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: white;
+  }
+  
+  .contact-info {
+    margin-bottom: 40px;
+  }
+  
+  .contact-info .label {
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    color: white;
+  }
+  
+  .contact-info p {
+    margin: 0;
+    color: white
+  }
+  
+  .social-icons a {
+    margin: 0 10px;
+    display: inline-block;
+    margin-top: 50px;
+  }
+  
+  .social-icons i{
+    font-size: 30px;
+    color: white;
+  }
+
+  .social-icons i:hover{
+    color: #2f3a36;
+    
+  }
+
+  .copyright{
+    margin-top: 40px;
+  }
+
+  @media (max-width: 768px){
+    .About-Us{
+      flex-direction: column;
+    }
+
+    .right a{
+      visibility: hidden; /* Hide normal nav */
+    }
+  
+    .hamburger {
+      display: block;
+    }
+  }
+  </style>
 </head>
 <body>
-    <div class="nav">
-        <div class="left">
-            <a href="index.html"><h2>ELYSIAN & CO</h2></a>
-        </div>
-        <div class="right">
-            <a href="AboutUs.html"><h2>About Us</h2></a>
-            <a href="#"><br><i class="fa-solid fa-cart-shopping"></i></a>
-        </div>
+  <div class="nav">
+    <div class="hamburger" id="hamburger" >
+      <i class="fas fa-bars"></i>
     </div>
-  <div class="container">
-    <div class="text-section">
-      <h1>About Us</h1>
-      <p>
-        What's special about your product, service, or company? Use this space to highlight the things that set you apart from your competition, whether it's a special feature, a unique philosophy, or awards and recognition that you have received.
-      </p>
-    </div>
-    <div class="image-section">
-      <img src="Jewellery lasts.jpg" alt="Cheers with hydration sticks">
-    </div>
+      <div class="left">
+          <a href="index.html"><h2>ELYSIAN & CO</h2></a>
+      </div>
+      <div class="right">
+          <a href="product.html" ><h2>Our Product</h2></a>
+          <a href="AboutUs.html"><h2>About Us</h2></a>
+        <div class="cart-icon" id="cart-icon">
+            <br><i class="fa-solid fa-cart-shopping"></i>
+          </div>
+      </div>
   </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    
+    <a href="product.html" style="margin-top: 20px;">Our Product</a>
+    <a href="AboutUs.html">About Us</a>
+  </div>
+    <section class="About-Us">
+        <div class="About-Us-left">
+    
+        </div>
+        <div class="About-Us-right">
+          <div class="About-Us-content">
+            <h1>About Us</h1>
+            <p>At Elysian & Co, we believe that true elegance shines brightest when it’s rooted in responsibility. Our handcrafted jewelry celebrates timeless beauty, ethical sourcing, and sustainable craftsmanship—ensuring that every piece you wear tells a story of both grace and care for the planet. From recycled metals to conflict-free stones, we’re redefining luxury with a conscience. Because looking good should feel just as good.</p>
+          </div>
+        </div>
+       
+      </section>
+      <section class="section-2">
+        <div class="section-2-container">
+
+        
+    </section>
+
+    <footer class="footer-section">
+      <div class="footer-content">
+        <h2>Connect with us!</h2>
+    
+        <div class="contact-info">
+          <p class="label">ADDRESS</p>
+          <p>123 Anywhere St. Any City, ST 12345</p>
+    
+          <p class="label">EMAIL</p>
+          <p>hello@reallygreatsite.com</p>
+    
+          <p class="label">PHONE</p>
+          <p>(123) 456-7890</p>
+        </div>
+    
+        <div class="social-icons">
+          <a href="#"><i class="fa-brands fa-facebook" alt="facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter" alt="twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram" alt="instagram"></i></a>
+        </div>
+      </div>
+      <div class="copyright">&copy; 2025 Elysian & Co. All rights reserved. Crafted with elegance & care.</div>
+    </footer>
+    
+
+  <script>
+        const cartIcon = document.getElementById("cart-icon");
+    const cartSidebar = document.createElement("div");
+    cartSidebar.className = "cart-sidebar";
+    document.body.appendChild(cartSidebar);
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cartSidebar.innerHTML = `
+    <button class="close-btn">&times;</button>
+    <h2>Your Cart</h2>
+    <div class="cart-items"></div>
+    <div class="cart-summary">Total: RM0</div>
+    <button id="checkout-btn" disabled>Checkout</button>
+    `;
+
+    const closeBtn = cartSidebar.querySelector(".close-btn");
+    const cartItemsContainer = cartSidebar.querySelector(".cart-items");
+    const checkoutBtn = cartSidebar.querySelector("#checkout-btn");
+    const cartSummary = cartSidebar.querySelector(".cart-summary");
+
+    cartIcon?.addEventListener("click", () => cartSidebar.classList.add("open"));
+    closeBtn?.addEventListener("click", () => cartSidebar.classList.remove("open"));
+
+    function showToast(msg) {
+    const toast = document.createElement("div");
+    toast.textContent = msg;
+    toast.style.cssText = `
+        position: fixed; bottom: 1px; right: 30px; background: #7a9e7e; color: white;
+        padding: 10px 20px; border-radius: 5px; z-index: 2000; font-weight: bold;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2); opacity: 0; transition: opacity 0.3s ease;
+    `;
+    document.body.appendChild(toast);
+    requestAnimationFrame(() => toast.style.opacity = 1);
+    setTimeout(() => {
+        toast.style.opacity = 0;
+        setTimeout(() => document.body.removeChild(toast), 300);
+    }, 2000);
+    }
+
+    function updateCartUI() {
+    if (!cartItemsContainer || !cartSummary || !checkoutBtn) return;
+
+    cartItemsContainer.innerHTML = "";
+    let total = 0;
+
+    cart.forEach((item, index) => {
+        const itemDiv = document.createElement("div");
+        itemDiv.className = "cart-item";
+        itemDiv.innerHTML = `
+        <div class="cart-item-inner">
+            <img src="${item.image}" />
+            <div class="details">
+            <p class="product-title">${item.name}</p>
+            <p class="product-price">RM ${item.price}</p>
+            </div>
+            <div class="quantity-control">
+            <button class="decrease">-</button>
+            <input type="number" value="${item.quantity}" readonly>
+            <button class="increase">+</button>
+            </div>
+            <button class="remove-item">&times;</button>
+        </div>
+        `;
+
+        itemDiv.querySelector(".decrease").addEventListener("click", () => updateQuantity(index, -1));
+        itemDiv.querySelector(".increase").addEventListener("click", () => updateQuantity(index, 1));
+        itemDiv.querySelector(".remove-item").addEventListener("click", () => {
+        cart.splice(index, 1);
+        updateCartUI();
+        });
+
+        cartItemsContainer.appendChild(itemDiv);
+        total += item.price * item.quantity;
+    });
+
+    cartSummary.innerText = `Total: RM ${total.toFixed(2)}`;
+    checkoutBtn.disabled = cart.length === 0;
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+    if (cartIcon) {
+        if (!cartIcon.querySelector(".cart-count")) {
+        const badge = document.createElement("span");
+        badge.className = "cart-count";
+        badge.style.cssText = `
+            position: absolute; top: 15px; right: 0; background: red; color: white;
+            border-radius: 50%; font-size: 12px; padding: 2px 6px;
+        `;
+        cartIcon.appendChild(badge);
+        }
+        cartIcon.querySelector(".cart-count").textContent = cartCount;
+    }
+    }
+
+    function updateQuantity(index, delta) {
+    cart[index].quantity += delta;
+    if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+    }
+    updateCartUI();
+    }
+
+    function addToCart(product) {
+    const existing = cart.find(item => item.id === product.id);
+    if (existing) {
+        existing.quantity += 1;
+    } else {
+        cart.push({ ...product, quantity: 1 });
+    }
+    updateCartUI();
+    showToast(`${product.name} added to cart!`);
+    }
+
+    // Make available globally so product.html can access it
+    window.addToCart = addToCart;
+
+    // Checkout button
+    checkoutBtn?.addEventListener("click", () => {
+    if (cart.length === 0) return;
+    localStorage.setItem("order", JSON.stringify(cart));
+    cart = [];
+    localStorage.setItem("cart", JSON.stringify(cart));
+    window.location.href = "checkout.html";
+    });
+
+
+    // Initial cart UI setup
+    updateCartUI();
+
+    const hamburger = document.getElementById("hamburger");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    hamburger.addEventListener("click", () => {
+      mobileMenu.classList.toggle("open");
+    });
+
+    mobileMenu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+      });
+    });
+
+  </script>
+  
 </body>
 </html>
