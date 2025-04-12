@@ -10,21 +10,37 @@
 <body>
   <div class="hero fade-in">
     <div class="nav">
-        <div class="left">
-            <h2>ELYSIAN & CO</h2>
+      <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+    
+      <div class="left">
+        <h2>ELYSIAN & CO</h2>
+      </div>
+    
+      <div class="right" id="main-nav">
+        <a href="product.html"><h2>Our Product</h2></a>
+        <a href="AboutUs.html"><h2>About Us</h2></a>
+        <div class="cart-icon" id="cart-icon">
+          <br><i class="fa-solid fa-cart-shopping"></i>
         </div>
-        <div class="right">
-            <a href="AboutUs.html"><h2>About Us</h2></a>
-          <div class="cart-icon" id="cart-icon">
-              <br><i class="fa-solid fa-cart-shopping"></i>
-            </div>
-        </div>
+      </div>
     </div>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <div class="hamburger" id="close-menu" style="margin-top: -40px;">
+        <i class="fas fa-bars"></i>
+      </div>
+      <a href="product.html" style="margin-top: 20px;">Our Product</a>
+      <a href="AboutUs.html">About Us</a>
+    </div>
+
     <div class="overlay">  
-      <div class="content">
+      <div class="content fade-in">
         <h1 class="title">TIMELESS<br>DESIGN</h1>
         <p class="subtitle">Elegant pieces you’ll keep forever</p>
-        <a href="#" class="btn">SHOP NOW</a>
+        <a href="product.html" class="btn">SHOP NOW</a>
       </div>
     </div>
   </div>
@@ -33,18 +49,19 @@
       <div class="feature-text">
         <h2>Beauty that doesn't come<br>at the expense of the earth<br></h2>
         <p><br>
-          What’s special about your product, service, or company?<br> Use this space to highlight the things
-          that set you apart from your competition, whether it’s a special feature,<br> a unique philosophy, 
-          or awards and recognition that you have received. Think of this as your elevator pitch to get 
-          the reader’s attention.
+          At Elysian & Co, we believe that true elegance shines brightest when it’s rooted in responsibility. 
+          Our handcrafted jewelry celebrates timeless beauty, ethical sourcing, and sustainable craftsmanship—ensuring 
+          that every piece you wear tells a story of both grace and care for the planet. 
+          From recycled metals to conflict-free stones, we’re redefining luxury with a conscience. 
+          Because looking good should feel just as good.
         </p>
-        <a href="#" class="btn">About Us</a>
+        <a href="AboutUs.html" class="btn">About Us</a>
       </div>
     </div>
   </section>
 
   <section class="upcoming">
-    <div class="upcoming-text">
+    <div class="upcoming-text fade-in">
     <h1>Upcoming<br>collection</h1>
     <h1>02.05.2025</h1>
 </div>
@@ -52,31 +69,30 @@
 
   <button id="scrollTopBtn" title="Go to top"><i class="fa fa-arrow-up"></i></button>
 
-  <section class="collection-section fade-in">
-    <h2>Our Collection</h2>
+  <section class="collection-section">
+    <h2>Our Collections</h2>
     <div class="product-grid">
         <div class="product-card" data-id="1">
-            <div class="product-image" style="background-image: url('Earrings-1.webp');"></div>
-            <p class="product-date"><br>November 2025</p>
-            <h3 class="product-title">Magnus Ceiling Light</h3>
+            <div class="product-image" style="background-image: url('timeless/Earrings-1.webp');" onclick="document.location='product.html'"></div>
+            <p class="product-date"><br>April 2024</p>
+            <h3 class="product-title"><a href="product.html">Timeless Collection</a></h3>
             <p class="product-price">$350</p>
-            <button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i></button>
         </div>
         <div class="product-card" data-id="2">
-            <div class="product-image" style="background-image: url('Necklace-1.webp');"></div>
-            <p class="product-date"><br>November 2025</p>
-            <h3 class="product-title">Fierro Lamp</h3>
+            <div class="product-image" style="background-image: url('valentine/Necklace-1.webp');" onclick="document.location='product.html'"></div>
+            <p class="product-date"><br>September 2024</p>
+            <h3 class="product-title"><a href="product.html">Valentine Collection</a></a></h3>
             <p class="product-price">$400</p>
-            <button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i></button>
         </div>
         <div class="product-card" data-id="3">
-            <div class="product-image" style="background-image: url('ring-1.webp');"></div>
-            <p class="product-date"><br>November 2025</p>
-            <h3 class="product-title">Gaia Mini Desk Lamp</h3>
+            <div class="product-image" style="background-image: url('bejewelled/ring-1.webp');" onclick="document.location='product.html'"></div>
+            <p class="product-date"><br>February 2025</p>
+            <h3 class="product-title"><a href="product.html">Bejewelled Collection</a></h3>
             <p class="product-price">$200</p>
-            <button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i></button>
         </div>
+        
     </div>
+    <button id="SeeAll" title="See All" id="SeeAll" onclick="document.location='product.html'"><i class="fa fa-arrow-right"></i></button>
 </section>
 
 
@@ -104,7 +120,7 @@
       </div>
       <div class="promise-item">
         <div class="promise-icons">
-            <i class="fa-solid fa-gem" alt="ESustainable lab-grown diamonds"></i>
+            <i class="fa-solid fa-gem" alt="Sustainable lab-grown diamonds"></i>
         </div>
         <p>Sustainable<br>lab-grown diamonds</p>
       </div>
@@ -135,17 +151,23 @@
     </div>
   </section>
 
-  <div class="cart-sidebar" id="cart-sidebar">
-    <h2>Your Cart</h2>
-    <button id="close-cart-btn" class="close-btn"><i class="fa fa-times"></i></button>
-    <div class="cart-items" id="cart-items">
-        <!-- Items will appear here -->
-    </div>
-    <div class="cart-summary">
-        <p id="total-price">Total: $0</p>
-        <button id="checkout-btn" class="btn">Checkout</button>
-    </div>
-</div>
+  <!-- Newsletter Section -->
+<section class="newsletter-section">
+  <div class="newsletter-left"></div>
+  <div class="newsletter-right fade-in">
+    <h2>Keep in touch</h2>
+    <h6>Sign up now for our newsletter</h6>
+    <p>Be the first to discover our newest collections, exclusive offers, and styling tips that sparkle.
+      Sign up for our newsletter and enjoy early access to launches, members-only discounts, and a touch of elegance in your inbox.</p>
+      <br><br><br><br>
+    <form class="newsletter-form">
+      <input type="text" placeholder="Name:" required>
+      <input type="email" placeholder="Email:" required>
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+</section>
+
 
 
   <footer class="footer-section">
@@ -169,6 +191,7 @@
         <a href="#"><i class="fa-brands fa-instagram" alt="instagram"></i></a>
       </div>
     </div>
+    <div class="copyright">&copy; 2025 Elysian & Co. All rights reserved. Crafted with elegance & care.</div>
   </footer>
   <script src="script.js"></script>
 </body>
