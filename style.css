@@ -59,6 +59,10 @@
     color: white; /* Ensures link text is white */
   }
   
+  .nav .right a:hover{
+    color: #737373;
+  }
+
   .nav h2 {
     text-align: center;
     font-size: 16px;
@@ -67,6 +71,55 @@
     text-decoration: none;
   }
   
+  .hamburger {
+    margin-top: 15px;
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1100;
+  }
+  
+  /* --- Mobile Menu Styling --- */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 100vh;
+    width: 250px;
+    background-color: #26322f;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 60px 20px;
+    transition: left 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .mobile-menu a {
+    width: 100%;
+    margin-top: 0;
+    padding: 20px 0;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+
+  }
+  
+  .mobile-menu a:hover {
+    background-color: #e3e3e3;
+    color: #26322f;
+  }
+  
+  .mobile-menu.open {
+    left: 0;
+  }
+
+.mobile-menu {
+  padding-top: 60px;
+}
+
+
   .overlay {
     position: absolute;
     margin-top: 0;
@@ -77,6 +130,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    color: white;
+    z-index: 999;
   }
   
   /*     background: rgba(0, 0, 0, 0.2); /* Optional dark overlay */ 
@@ -153,7 +208,6 @@
   .feature-text h2 {
     font-size: 50px;
     color: #fff;
-
     font-weight: 300;
     
   }
@@ -163,75 +217,10 @@
     color: #fff;
     line-height: 1.6;
     font-weight: 300;
-  }
-
-  .feature {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #f8f1e9;
-    font-family: 'Georgia', serif;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Full screen height */
+    margin:auto;
+    margin: 0 150px;
   }
   
-  .feature-overlay3 {
-    position: relative;
-    width: 100%;
-    max-width: 1100px; /* More room */
-    height: 100%;
-    background-color: white;
-    padding: 10px;
-    border: 2px solid #e5dfd5;
-    box-shadow:
-      inset 0 0 0 1px #d9d2c8;
-    overflow: hidden;
-    align-items: center;
-  }
-  
-  .feature-overlay3::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%; /* Full height image */
-    background-image: url('Jewellery-2.avif');
-    background-size: cover;
-    background-position: center;
-    filter: brightness(0.7);
-    z-index: 1;
-  }
-  
-  .feature-text-overlay {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    color: white;
-    padding: 40px;
-    width: 90%;
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: rgba(255, 255, 255, 0.1);
-
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-  }
-  
-  .feature-text-overlay h1 {
-    font-size: 3rem; /* Bigger heading */
-    line-height: 1.4;
-    margin-bottom: 24px;
-
-  }
-  
-  .feature-text-overlay p {
-    font-size: 1.25rem; /* Bigger paragraph */
-    line-height: 1.8;
-
-  }
   
   /* Optional button for call to action */
   .feature-btn {
@@ -329,17 +318,26 @@
 
 .product-date {
     font-size: 12px;
-    text-transform: uppercase;
+    text-transform: none;
     color: #ccc;
     margin-bottom: 4px;
 }
 
 .product-title {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 0 0 6px;
-    color: white;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 0 6px;
 }
+
+.product-title a {
+  text-decoration: none;
+  color: white;
+}
+
+.product-title a:hover {
+  color: #ccc;
+}
+
 
 .product-price {
     font-size: 14px;
@@ -351,6 +349,29 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+#SeeAll {
+
+float:right;
+  bottom: 0;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+#SeeAll:hover {
+  background-color: #555;
 }
 
 .add-to-cart {
@@ -623,9 +644,96 @@
     padding-bottom: 5px;
   }
   
+  /* Newsletter Section */
+.newsletter-section {
+  font-family: 'Georgia', serif;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  
+}
+
+.newsletter-left {
+  flex: 1;
+  background-image: url('newsletter.png'); /* Dark section */
+    background-size: cover;
+    background-repeat: no-repeat;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 15rem;
+  color: #f4ede5;
+}
+
+.newsletter-left i{
+  margin-top: 180px;
+}
+
+.newsletter-right {
+  flex: 1;
+   /* Light section */
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.newsletter-right h2 {
+  font-size: 2.5rem;
+  color: #303f3c;
+  margin-bottom: 20px;
+}
+
+.newsletter-right h6 {
+  color: #28292a;
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
+
+.newsletter-right p{
+  color: #545454;
+  line-height: 1.8;
+  
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 300px;
+}
+
+.newsletter-form input {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  margin-bottom: 10px;
+  background-color: #e3e3e3;
+  width: 500px;
+}
+
+.newsletter-form button {
+  padding: 12px;
+  border: none;
+  border-radius: 20px;
+  background-color: #303f3c;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+  width: 200px;
+}
+
+.newsletter-form button:hover {
+  background-color: #333;
+}
+
 
   .footer-section {
-    background-image: url('Jewellery-4.jpeg');
+    background-image: url('background-4.jpg');
     background-size: cover;
     background-position: bottom;
     background-repeat: no-repeat;
@@ -669,6 +777,14 @@
     color: white;
   }
 
+  .social-icons i:hover{
+    color: #737373;
+  }
+
+  .copyright{
+    margin-top: 40px;
+  }
+
   .add-to-cart {
     background-color: #2e4d3d;
     color: white;
@@ -706,6 +822,7 @@
     cursor: pointer;
     font-size: 20px;
     color: white;
+    margin-bottom: 5px;
   }
   
   
@@ -755,7 +872,6 @@
     background-color: #e8e6e1;
     display: flex;
     align-items: center;
-    justify-content: center;
 
   }
   
@@ -771,12 +887,50 @@
   @media (max-width: 768px) {
     .upcoming-text {
       flex-direction: column;
-      gap: 20px;
-      margin-left: 0;
+      gap: 60px;
+
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+
     }
 
     .upcoming h1 {
       font-size: 36px;
+    }
+
+    .feature-text h2 {
+      font-size: 30px;
+      
+    }
+    
+    .feature-text p {
+      font-size: 12px;
+
+    }
+
+    .review{
+      max-width: none;
+    }
+
+    .newsletter-section{
+      flex-direction: column;
+    }
+
+    .newsletter-form input{
+      width: auto;
+    }
+
+    .feature-text p{
+      margin: 0;
+    }
+
+    .right a{
+      visibility: hidden; /* Hide normal nav */
+    }
+  
+    .hamburger {
+      display: block;
     }
   }
 
