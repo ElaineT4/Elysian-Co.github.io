@@ -885,6 +885,16 @@ float:right;
   
   
   @media (max-width: 768px) {
+    .hero .content{
+    margin-right: 15px;
+    }
+
+    .feature-section{
+    margin: 20px;
+    padding: 40px 10px;
+    }
+
+      
     .upcoming-text {
       flex-direction: column;
       gap: 60px;
@@ -905,7 +915,7 @@ float:right;
     }
     
     .feature-text p {
-      font-size: 12px;
+      font-size: 15px;
 
     }
 
