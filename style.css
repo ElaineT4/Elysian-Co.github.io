@@ -886,11 +886,11 @@ float:right;
   
   @media (max-width: 768px) {
     .hero .content{
-    margin-right: 15px;
+    margin-left: -15px;
     }
 
     .feature-section{
-    margin: 20px;
+    margin: 15px;
     padding: 40px 10px;
     }
 
@@ -910,17 +910,17 @@ float:right;
     }
 
     .feature-text h2 {
-      font-size: 30px;
+      font-size: 25px;
       
     }
     
     .feature-text p {
-      font-size: 15px;
+      font-size: 12px;
 
     }
 
-    .review{
-      max-width: none;
+    .review-section{
+      margin: 0;
     }
 
     .newsletter-section{
@@ -929,6 +929,10 @@ float:right;
 
     .newsletter-form input{
       width: auto;
+    }
+
+    .newsletter-form button{
+    margin-bottom: 20px;
     }
 
     .feature-text p{
