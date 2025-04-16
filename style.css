@@ -885,6 +885,20 @@ float:right;
   
   
   @media (max-width: 768px) {
+
+    .overlay .content{
+        margin-left: -5px;
+    }
+
+    .feature-section{
+    margin: 15px;
+    padding: 40px 10px;
+    }
+
+    .feature-text{
+        margin: 0 2px;
+    }
+      
     .upcoming-text {
       flex-direction: column;
       gap: 60px;
@@ -919,6 +933,10 @@ float:right;
 
     .newsletter-form input{
       width: auto;
+    }
+
+    .newsletter-form button{
+    margin-bottom: 20px;
     }
 
     .feature-text p{
@@ -972,6 +990,6 @@ float:right;
   #scrollTopBtn:focus {
     outline: none;
   }
-  
+}
   
   
