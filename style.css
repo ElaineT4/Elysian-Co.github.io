@@ -885,14 +885,6 @@ float:right;
   
   
   @media (max-width: 768px) {
-    
-
-    .feature-section{
-    margin: 15px;
-    padding: 40px 10px;
-    }
-
-      
     .upcoming-text {
       flex-direction: column;
       gap: 60px;
@@ -907,9 +899,6 @@ float:right;
       font-size: 36px;
     }
 
-    .feature-text{
-        margin: 0 2px;
-
     .feature-text h2 {
       font-size: 30px;
       
@@ -920,8 +909,8 @@ float:right;
 
     }
 
-    .review-section{
-      margin: 0;
+    .review{
+      max-width: none;
     }
 
     .newsletter-section{
@@ -929,11 +918,7 @@ float:right;
     }
 
     .newsletter-form input{
-      width: 20px;
-    }
-
-    .newsletter-form button{
-    margin-bottom: 20px;
+      width: auto;
     }
 
     .feature-text p{
