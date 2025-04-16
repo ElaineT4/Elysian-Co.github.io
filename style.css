@@ -885,7 +885,7 @@ float:right;
   
   
   @media (max-width: 768px) {
-    .hero .content{
+    .overlay .content{
     margin-left: -15px;
     }
 
@@ -909,8 +909,11 @@ float:right;
       font-size: 36px;
     }
 
+    .feature-text{
+        margin: 0 15px;
+
     .feature-text h2 {
-      font-size: 25px;
+      font-size: 30px;
       
     }
     
