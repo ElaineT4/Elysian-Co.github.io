@@ -885,9 +885,7 @@ float:right;
   
   
   @media (max-width: 768px) {
-    .overlay .content{
-    margin-left: -15px;
-    }
+    
 
     .feature-section{
     margin: 15px;
@@ -910,7 +908,7 @@ float:right;
     }
 
     .feature-text{
-        margin: 0 15px;
+        margin: 0 2px;
 
     .feature-text h2 {
       font-size: 30px;
@@ -931,7 +929,7 @@ float:right;
     }
 
     .newsletter-form input{
-      width: auto;
+      width: 20px;
     }
 
     .newsletter-form button{
